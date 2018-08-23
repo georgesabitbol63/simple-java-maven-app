@@ -16,12 +16,11 @@ pipeline {
                 sh 'mvn test'
             }
         }
- 
         stage('testsonar') {
             steps {
                 sh 'mvn sonar:sonar -Dsonar.host.url=http://172.28.21.75:9000 -Dsonar.login=75b9e77873a2d39c9cf93f769b3606e294210669'
-        }
             }
+        }
             post {
                 always {
                     junit 'target/surefire-reports/*.xml'
